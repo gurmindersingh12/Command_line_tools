@@ -28,3 +28,27 @@ $ find /root_folder/home/username/directory_name -name "*.fasta"
 ## the `*` is a wildcard, meaning it will match any string of characters.
 ## the above code will search through `directory_name` and all its sub-direactories for files with names ending in `.fasta'
 
+## `.fasta` is the file extension commonly used for FASTA format files (biological sequence data files).
+
+## we can also specify a simple action `ls`
+
+$ find /root_folder/home/username/directory_name -name "*.fasta" -ls
+## actions = -ls. it will print out a long listing, not just the names.
+
+## We can divide usage of [location], [criteria], and [actions] further with different options,
+
+## [location] - 3 different ways
+
+# Absolute paths, (for example, find /root/home/user/data)
+# Relative paths, (for example, find ./data)
+# Multiple paths separated by spaces, (for example, find /home/user ./data)
+
+
+## [criteria] - most commonly used.
+
+# `-name`: match file names with a specific name
+$ find ./data -name "*.txt"
+
+# `-type`: specify the type of file to search for: `f`: regular files; `d`: directories
+
+$ find ./data -type f
