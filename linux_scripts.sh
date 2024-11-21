@@ -52,3 +52,44 @@ $ find ./data -name "*.txt"
 # `-type`: specify the type of file to search for: `f`: regular files; `d`: directories
 
 $ find ./data -type f
+
+# `-size`: match files by size.
+$ find ./data -size +1M
+## the above code will find files greater than 1 Mb.
+
+# `-mtime`: match files modified a certain number of days ago.
+$ find ./data -mtime -7
+## the above code will find files modified in last 7 days.
+
+# `-user`: match files owned by a specific user.
+$ find ./data -user username
+
+# `-perm`: match files by permission.
+$ find ./data -perm 644
+
+
+## "644" represents the file permissions in the octal notation. In Linux, file permissions determine 
+## who can read, write or execute a file. These are typically displayed in three groups:
+## `owner`, `group`, and `others`.
+
+## Understanding `644`
+
+## Octal Notation breakdown: the `644` is a shorthand for the permissions:
+## Owner: `6` = Read (4) + Write (2) = `6`
+## Group: `4` = Read (4) = `4`
+## Others: `4` = Read (4) = `4`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
