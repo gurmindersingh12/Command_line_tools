@@ -101,6 +101,41 @@ $ find ./data -perm 644
 
 $ find ./data -perm 644
 
+## if we want to match files where at least these permissions are set (but possibly more permissive).
+$ find ./data -perm -644
+
+## the modifier `-` in front of `644` ensures that the permissions on the file meet or exceed the `644` criteria.
+## basically equal to greater than `644` permissions.
+
+
+#######################################################################
+####################  Common Permission Values  #######################
+#######################################################################
+
+## `777`:	`rwxrwxrwx`	(Full permissions for everyone).
+## `755`:	`rwxr-xr-x`	(Owner can read, write, execute; others read & execute).
+## `644`:	`rw-r--r--`	(Owner can read/write; others can read only).
+## `600`:	`rw-------`	(Only the owner can read and write).
+## `444`:	`r--r--r--`	(Read-only for everyone).
+## `000`:	`----------`	(No permissions at all).
+
+### How Permissions Are Calculated:
+
+## Each digit represents a user class:
+## First digit: Owner
+## Second digit: Group
+## Third digit: Others
+
+## Each digit is a sum of:
+## 4: Read (r)
+## 2: Write (w)
+## 1: Execute (x)
+
+## For example: 644 = 6 (4+2 for rw-) + 4 (r--) + 4 (r--).
+
+## To see a file's permissions, use the `ls -l` command:
+$ ls -l ./data/Tsc2/file.fasta
+
 
 
 
