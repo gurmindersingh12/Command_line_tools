@@ -79,6 +79,29 @@ $ find ./data -perm 644
 ## Group: `4` = Read (4) = `4`
 ## Others: `4` = Read (4) = `4`
 
+## Symbolic representation:
+## `644` correspond to the symbolic format `rw-r--r--'
+## `r`: Read permission
+## `w`: Write permission
+## `-`: No permission
+
+## Breakdown of `rw-r--r--` (or we can say `644`)
+
+## Owner: `rw-` (Read and Write)
+## Group: `r--` (Read Only)
+## Others: `r--` (Read Only)
+
+### So, basically the meaning of `644` permission is that, it allows:
+
+## Owner: Read and write access
+## Group: Read-only access
+## Others: Read-only access
+
+## command to find files exactly with `644` permissions.
+
+$ find ./data -perm 644
+
+
 
 
 
