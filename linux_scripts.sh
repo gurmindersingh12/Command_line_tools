@@ -140,8 +140,25 @@ $ ls -l
 ##############################################################################################
 
 
+## we can also use logical operators to combine the `criteria`
+
+## `-and` (default): Both conditions must match.
+## `-or` : either condition can match.
+## `!` : negate a condition.
 
 
+$ find ./data -type f -name "*.fasta" -or -name "*.txt"
+
+## usually `and` is default so we need not to explicitly write `and` in the code, but for cleaner code, 
+## good readibility, and good understanding, we can use `-and`.
+
+## For `-or` command
+
+## You need to enclose combined conditions in parentheses to ensure proper precedence; parentheses must be 
+## escaped with `\( and \)` to avoid shell interpretation.
+
+$ find ./data \( -name "*.fasta" -or -name "*.txt" \)
+## finds all .fasta and .txt files.
 
 
 
