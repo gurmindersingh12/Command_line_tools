@@ -154,11 +154,71 @@ $ find ./data -type f -name "*.fasta" -or -name "*.txt"
 
 ## For `-or` command
 
-## You need to enclose combined conditions in parentheses to ensure proper precedence; parentheses must be 
+## We need to enclose combined conditions in parentheses to ensure proper precedence; parentheses must be 
 ## escaped with `\( and \)` to avoid shell interpretation.
 
 $ find ./data \( -name "*.fasta" -or -name "*.txt" \)
 ## finds all .fasta and .txt files.
+
+## spaces are crucial in above code.
+## for example, if \(-name....\), it should be \( -name.... \)
+
+## why parentheses is important:
+## let's say we wrote this code, $ find ./data -name "*.txt" -or -name "*.log" -and -size +1M
+## the above command will find all the .txt file OR .log files larger than 1MB.
+## But we want .txt or .log files which are larger than 1MB. Correct code will be:
+$ find ./data \( -name "*.txt" -or -name "*.log" \) -and -size +1M
+
+
+## For `!` command
+
+## find the files that do not meet the specified condition.
+
+$ find ./data -type f ! -name "*.txt"
+
+## the above code will find all the files that are not .txt files.
+
+### we have discussed [location] and [criteria] above, now let's discuss [actions]
+
+## most common ones are `-print`, `-exec`, `-delete`, `-ls`
+
+## even if we don't write `-print`, it will automatically print the paths (default behaviour)
+
+$ find ./data -name "*.fasta"
+# OR
+$ find ./data -name "*.fasta" -print
+
+## the two mentioned commands above will do the same thing.
+
+$ find ./data -name "*.fasta" -delete
+## the above command will delete files or directories matching the criteria specified.
+
+$ find ./data -name "*.fasta" -ls
+## the above command will list details files or directories matching the criteria specified.
+
+## the modified version of above command, it will list details about all files and directories in that particular folder.
+$ ls -l
+
+$ find ./data -name "*.fasta" -exec cat {} \;
+
+## `-exec` option allows us to execute a command on each file found by `find`. Here. command `cat`
+## will be executed. basically open the .fasta files.
+## `{}` is a placeholder for the current file found by the `find`. Each matched file is substituted
+## into `{}` one by one.
+
+## `\;` this command terminates the `-exec` command. 
+
+$ find ./data -name "*.fasta" -exec rm {} \;
+## delete the .fasta files in the specified location
+
+## to navigate more functionality of `find` command, we can simply type:
+$ find --help
+
+## we can also use `locate` command to search files. try:
+$ locate --help
+
+
+###############################################################
 
 
 
