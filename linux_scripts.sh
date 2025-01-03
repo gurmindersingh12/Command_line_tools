@@ -241,17 +241,27 @@ $ grep pig filename
 $ grep -i -e pig -e dog -r .
 
 ## the above command will search all files in the current directory and those below it for the strings "pig" or "dog", ignoring case.
+## -i: Makes the search case-insensitive (e.g., "PIG", "Pig", and "pig" are all matched).
+## -e: Specifies a pattern to search for. Multiple -e options allow you to search for multiple patterns (e.g., "pig" and "dog").
+## -r: Enables recursive search, searching files in the current directory and all subdirectories.
+## .: Specifies the current directory as the starting point for the search.
 
 ## If we try to explore the use of regular expressions in detail, it would be a large topic, but here are some examples:
 
-# print all lines that start with "dog"
+# print all lines that start with "dog" (e.g., dog., doghouse, dog)
 $ grep "^dog" file
+## ^: Anchors the match to the beginning of the line.
+## dog: Matches the literal word "dog".
 
-# print all lines that end with "dog"
+# print all lines that end with "dog" (e.g., dog, catdog)
 $ grep "dog$" file
+## dog: Matches the literal word "dog".
+## $: Anchors the match to the end of the line.
 
-# print all lines that end with "dog"
+# print all lines that end with "dog" (e.g., dat, dot)
 $ grep d[a-p] file
+## d: Matches the literal character d.
+## [a-p]: Matches any single character in the range a to p (inclusive).
 
 ## grep has many options; some of the most important are:
 
